@@ -1,0 +1,42 @@
+from selenium import webdriver
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.keys import Keys
+import time
+import os
+Driver = webdriver.Chrome()
+time.sleep(.5)
+DocumentManagementService = "http://10.0.0.12:8080/swagger/index.html"
+ELDService = "http://10.0.0.12:8082/swagger/index.html"
+ReportService = "http://10.0.0.12:8094/swagger/index.html"
+NotificationSchedulingService = "http://10.0.0.12:8106/swagger/index.html"
+NotifyService = "http://10.0.0.12:8110/swagger/index.html"
+TruckingSolutionsACL = "http://10.0.0.12:8112/swagger/index.html"
+GeoTabService = "http://10.0.0.12:8114/swagger/index.html"
+LegacyEventPublishingService = "http://10.0.0.12:8116/swagger/index.html"
+FuelTaxService = "http://10.0.0.12:8120/swagger/index.html"
+LegacyEventPullerService = "http://10.0.0.12:8126/swagger/index.html"
+
+Driver.get(DocumentManagementService)
+time.sleep(3)
+Driver.get(ELDService)
+time.sleep(3)
+Driver.get(ReportService)
+time.sleep(3)
+Driver.get(NotificationSchedulingService)
+time.sleep(3)
+Driver.get(NotifyService)
+time.sleep(3)
+Driver.get(TruckingSolutionsACL)
+time.sleep(3)
+Driver.get(GeoTabService)
+time.sleep(3)
+Driver.get(LegacyEventPublishingService)
+time.sleep(3)
+Driver.get(FuelTaxService)
+time.sleep(3)
+Driver.get(LegacyEventPullerService)
+time.sleep(3)
