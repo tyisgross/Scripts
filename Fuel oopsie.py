@@ -15,7 +15,7 @@ import fnmatch
 from bs4 import BeautifulSoup
 os.chdir("C:/")
 username = "tyg"
-password = "85*4dbe*92"
+password = "8asdfqwertqwet"
 FuelTaxWizard = "http://itc-staging.glostone.com/FuelTaxWizard.aspx"
 ITC = "http://itc-staging.glostone.com/"
 ClientList = pd.read_csv('C:/Python/September.csv')
