@@ -5,7 +5,7 @@ newuserln = "dilling"
 ###
 ### variables set first
 newuseremail = newuseracct + "@glostone.com"
-newuserpw = "Glostone2024!"
+newuserpw = "gasdgasdgasdg!"
 newinbox = newuseracct + "'s inbox"
 ###
 ###
@@ -31,18 +31,18 @@ from bs4 import BeautifulSoup
 ##
 DW = "https://docuware.gradientway.com/DocuWare/Settings"
 DWadmin = "dwadmin"
-DWpassword = "NINERS13303"
-dwuserpass = "12345678"
+DWpassword = "sdfhsdfhsdfh"
+dwuserpass = "sdfhsdfhsdfhsfhh"
 NetworkID = "glostonetruckin\\" + newuseracct
 ##LMS stuff
 LMSus = "tyg@glostone.com"
-LMSpw = "PVATCRYaFjLANWnh7pj0uH*A"
+LMSpw = "sdfhsdfhsdhsdfhdfh*A"
 LMS = "https://learning.cleanfleet.org/wp-admin/users.php"
 LMScourse = "https://learning.cleanfleet.org/wp-admin/post.php?post=453&action=edit&currentTab=sfwd-courses-settings"
 ## Safeguard stuff
 SFG = "https://safeguard.gradientway.com"
 sfguser = "tyg"
-sfgpw = "85*4dbe*92"
+sfgpw = "8wertwertwertwert"
 ## launch chrome
 Driver = webdriver.Chrome()
 
