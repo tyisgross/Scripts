@@ -16,7 +16,7 @@ import fnmatch
 clientlist = pd.read_csv('KeepTruckin_JulyMiles_Load.csv')
 
 username = "eld_stidum@glostone.com"
-password = "2020T&xKT"
+password = "asdfasdf&qwerqwer"
 
 GoMotive = "https://account.gomotive.com/log-in?referer_url=https%3A%2Fgomotive.com%2F"
 
