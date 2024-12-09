@@ -16,11 +16,12 @@ Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
 Connect-ExchangeOnline -Credential $credential
 Connect-MicrosoftTeams -Credential $credential
 
-# Run this stuff first
-Remove-ADGroupMember -Group "Glostone Usr" -Member $userlogin -Confirm:$false
+# These things actually do the work; Setting licenses, distribution lists, teams groups, 
+Remove-ADGroupMember -Identity "Glostone Usr" -Member $userlogin -Confirm:$false
 Remove-DistributionGroupMember -Identity "Vehicle Services" -Member $useremail -Confirm:$false
 Remove-DistributionGroupMember -Identity "All Hands" -Member $useremail -Confirm:$false
 Remove-UnifiedGroupLinks -Identity "Vehicle Services Team" -LinkType Members -Links $useremail -Confirm:$false
+Remove-UnifiedGroupLinks -Identity "All Hands Team" -LinkType Members -Links $useremail -Confirm:$false
 Disable-ADAccount -Identity $userlogin
 Set-MgUserLicense -UserId $useremail -RemoveLicenses @($o365) -AddLicenses @{}
 Set-MgUserLicense -UserId $useremail -RemoveLicenses @($mde) -AddLicenses @{}
