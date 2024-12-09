@@ -5,7 +5,7 @@ newuserfn = "shelly"
 newuserln = "abbs"
 ###
 ### variables set first
-newuserpw = "Glostone2024!"
+newuserpw = "grrrrrrrrrrrr!"
 newinbox = newuseracct + "'s inbox"
 ###
 ###
@@ -31,12 +31,12 @@ from bs4 import BeautifulSoup
 ##
 DW = "https://docuware.gradientway.com/DocuWare/Settings"
 DWadmin = "dwadmin"
-DWpassword = "NINERS13303"
-dwuserpass = "12345678"
+DWpassword = "gaaaaaaaaaaaaaaaaaa"
+dwuserpass = "grrrrrrrrrrrrrrr"
 NetworkID = "glostonetruckin\\" + newuseracct
 ##LMS stuff
 LMSus = "tyg@glostone.com"
-LMSpw = "PVATCRYaFjLANWnh7pj0uH*A"
+LMSpw = "gaaaaaaaaaaaaaaaaaaa*A"
 LMS = "https://learning.cleanfleet.org/wp-admin/user-new.php"
 LMScourse = "https://learning.cleanfleet.org/wp-admin/post.php?post=453&action=edit&currentTab=sfwd-courses-settings"
 ## launch chrome
