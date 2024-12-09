@@ -18,7 +18,7 @@ import pathlib
 
 
 email = 'johnm@glostone.com'
-password = 'L!feBurger2021'
+password = 'L!ASDASDASDASD'
 clearinghouse = "https://clearinghouse.fmcsa.dot.gov/Query?PageNumber=1&SelectedTimeframe=Days7"
 
 #Make chrome headless aka no window
