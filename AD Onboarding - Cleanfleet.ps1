@@ -27,25 +27,27 @@ New-ADUser @splat
 
 Add-ADGroupMember -Identity "CleanFleet Usr" -Members $userlogin -Confirm:$false
 
+Start-Sleep -Seconds 10
+
+Start-ADSyncSyncCycle -PolicyType Initial
+
 # Run this stuff to sync with the online office365 portal
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 $credential = Get-Credential
-#Import-Module ExchangeOnlineManagement
-#Import-Module Microsoft.Graph
 Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
 Connect-ExchangeOnline -Credential $credential
 Connect-MicrosoftTeams -Credential $credential
 Import-Module -UseWindowsPowerShell -Name ADSync;
-Start-ADSyncSyncCycle -PolicyType Delta
+Start-Sleep -Seconds 60
 
 
-# Run this stuff first
-
-Add-DistributionGroupMember -Identity "All Cleanfleet" -Member $useremail
-Add-DistributionGroupMember -Identity "All Hands" -Member $useremail
-Add-UnifiedGroupLinks -Identity "Driver Services Team" -LinkType Members -Links $useremail -Confirm:$false
+# These things actually do the work; Setting licenses, distribution lists, teams groups.
 Set-MgUserLicense -UserId $useremail -AddLicenses @{SkuID = $o365} -RemoveLicenses @()
 Set-MgUserLicense -UserId $useremail -AddLicenses @{SkuID = $mde} -RemoveLicenses @()
 Set-MgUserLicense -UserId $useremail -AddLicenses @{SkuID = $atp} -RemoveLicenses @()
+Add-DistributionGroupMember -Identity "All Cleanfleet" -Member $useremail
+Add-DistributionGroupMember -Identity "All Hands" -Member $useremail
+Add-UnifiedGroupLinks -Identity "Driver Services Team" -LinkType Members -Links $useremail -Confirm:$false
+Add-UnifiedGroupLinks -Identity "All Hands Team" -LinkType Members -Links $useremail -Confirm:$false
 Add-TeamUser -user $useremail -GroupId ###########-5760-481e-b2bc-########### -Role Member
 Add-TeamUser -user $useremail -GroupId ###########-623c-4817-9bd5-########### -Role Member
