@@ -26,26 +26,26 @@ $splat = @{
 }
 New-ADUser @splat
 
-Add-ADGroupMember -Group "Glostone Usr" -Member $userlogin -Confirm:$false
+Add-ADGroupMember -Identity "Glostone Usr" -Members $userlogin -Confirm:$false
 
+Start-Sleep -Seconds 10
 
-# Run this stuff first
+Import-Module -UseWindowsPowerShell -Name ADSync;
+Start-ADSyncSyncCycle -PolicyType Initial
+
+# Run this stuff to sync with the online office365 portal
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 $credential = Get-Credential
-#Import-Module ExchangeOnlineManagement
-#Import-Module Microsoft.Graph
 Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
 Connect-ExchangeOnline -Credential $credential
 Connect-MicrosoftTeams -Credential $credential
-Import-Module -UseWindowsPowerShell -Name ADSync;
-Start-ADSyncSyncCycle -PolicyType Delta
 
+Start-Sleep -Seconds 60
 
+# These things actually do the work; Setting licenses, distribution lists, teams groups, 
 Add-DistributionGroupMember -Identity "Vehicle Services" -Member $useremail
 Add-DistributionGroupMember -Identity "All Hands" -Member $useremail
 Add-UnifiedGroupLinks -Identity "Vehicle Services Team" -LinkType Members -Links $useremail -Confirm:$false
-Set-MgUserLicense -UserId $useremail -AddLicenses @{SkuID = $o365} -RemoveLicenses @()
-Set-MgUserLicense -UserId $useremail -AddLicenses @{SkuID = $mde} -RemoveLicenses @()
-Set-MgUserLicense -UserId $useremail -AddLicenses @{SkuID = $atp} -RemoveLicenses @()
+Add-UnifiedGroupLinks -Identity "All Hands Team" -LinkType Members -Links $useremail -Confirm:$false
 Add-TeamUser -user $useremail -GroupId ########-307c-4ae6-8e29-######## -Role Member
 Add-TeamUser -user $useremail -GroupId ########-623c-4817-9bd5-######## -Role Member
