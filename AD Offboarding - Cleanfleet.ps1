@@ -15,10 +15,11 @@ Connect-MgGraph -Scopes User.ReadWrite.All, Organization.Read.All
 Connect-ExchangeOnline -Credential $credential
 Connect-MicrosoftTeams -Credential $credential
 
-# Run this stuff first
+# These things actually do the work; Removing licenses, distribution lists, teams groups, 
 Remove-ADGroupMember -Identity "CleanFleet Usr" -Member $userlogin -Confirm:$false
 Remove-DistributionGroupMember -Identity "All Cleanfleet" -Member $useremail -Confirm:$false
 Remove-DistributionGroupMember -Identity "All Hands" -Member $useremail -Confirm:$false
+Remove-UnifiedGroupLinks -Identity "All Hands Team" -LinkType Members -Links $useremail -Confirm:$false
 Disable-ADAccount -Identity $userlogin
 Set-MgUserLicense -UserId $useremail -RemoveLicenses @($o365) -AddLicenses @{}
 Set-MgUserLicense -UserId $useremail -RemoveLicenses @($mde) -AddLicenses @{}
