@@ -1,0 +1,43 @@
+# User creation
+$usermod = Read-Host 'Are you creating or decomming a user? 1 = Create, 2 = Decomm'
+$usertype = Read-Host 'What type of user is this? 1 = Vehicle Services User, 2 = Vehicle Services Manager, 3 = Driver Services User, 4 = Driver Services Manager'
+
+### Vehicle Services Account Creation
+if ((1 -eq $usermod) -and (1 -eq $usertype)){
+    Start-Process -FilePath "C:\Scripts\AD Onboarding - VS.ps1"
+    }
+
+### Vehicle Services Manager Account Creation
+if ((1 -eq $usermod) -and (2 -eq $usertype)){
+    Start-Process -FilePath "C:\Scripts\AD Onboarding - VS Manager.ps1"
+    }
+
+### Driver Services Account Creation
+if ((1 -eq $usermod) -and (3 -eq $usertype)){
+    Start-Process -FilePath "C:\Scripts\AD Onboarding - DS.ps1"
+    }
+
+### Driver Services Manager Account Creation
+if ((1 -eq $usermod) -and (4 -eq $usertype)){
+    Start-Process -FilePath "C:\Scripts\AD Onboarding - DS Manager.ps1"
+    }
+
+### Vehicle Services Account Decomm
+if ((2 -eq $usermod) -and (1 -eq $usertype)){
+    Start-Process -FilePath "C:\Scripts\AD Offboarding - VS.ps1"
+    }
+
+### Vehicle Services Manager Account Decomm
+if ((2 -eq $usermod) -and (2 -eq $usertype)){
+    Start-Process -FilePath "C:\Scripts\AD Offboarding - VS Manager.ps1"
+    }
+
+### Driver Services Account Decomm
+if ((2 -eq $usermod) -and (3 -eq $usertype)){
+    Start-Process -FilePath "C:\Scripts\AD Offboarding - DS.ps1"
+    }
+
+### Driver Services Manager Account Decomm
+if ((2 -eq $usermod) -and (4 -eq $usertype)){
+    Start-Process -FilePath "C:\Scripts\AD Offboarding - DS Manager.ps1"
+    }
